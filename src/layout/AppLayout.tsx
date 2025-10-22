@@ -8,19 +8,18 @@ const LayoutContent: React.FC = () => {
   const { isExpanded, isHovered, isMobileOpen } = useSidebar();
 
   return (
-    <div className="min-h-screen xl:flex flex-row-reverse" dir="rtl">
-      {/* الشريط الجانبي على اليمين */}
+    <div className="min-h-screen flex flex-row-reverse"> {/* ✅ نبدل الترتيب حتى السايدبار يصير يمين */}
+      {/* ✅ السايدبار */}
       <div>
         <AppSidebar />
         <Backdrop />
       </div>
 
-      {/* المحتوى الرئيسي */}
+      {/* ✅ المحتوى */}
       <div
-        className={`flex-1 transition-all duration-300 ease-in-out
-          ${isExpanded || isHovered ? "lg:mr-[290px]" : "lg:mr-[90px]"}
-          ${isMobileOpen ? "mr-0" : ""}
-        `}
+        className={`flex-1 transition-all duration-300 ease-in-out ${
+          isExpanded || isHovered ? "lg:mr-[290px]" : "lg:mr-[90px]"
+        } ${isMobileOpen ? "mr-0" : ""}`}  // ✅ استبدلنا ml بـ mr
       >
         <AppHeader />
         <div className="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">

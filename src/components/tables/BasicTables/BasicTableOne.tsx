@@ -168,7 +168,7 @@ export default function BasicTableOne() {
                       <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
                         {order.user.name}
                       </span>
-                      <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
+                      <span className="block لال text-gray-500 text-theme-xs dark:text-gray-400">
                         {order.user.role}
                       </span>
                     </div>
