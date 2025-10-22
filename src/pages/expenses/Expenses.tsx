@@ -3,41 +3,45 @@ import PageMeta from "../../components/common/PageMeta";
 
 const cardData = [
   {
-    title: "ايراد بيع مزاد العملة",
-    description:
-      "الإيرادات المتحصلة من بيع العملات في المزاد، والتي تعكس القيمة الإجمالية للمبيعات وفق الأسعار المتفق عليها لكل عملة",
-    link: "./Selectatt.tsx",
+    title: "رواتب والاجور",
+    description: "المصاريف المخصصة لدفع رواتب الموظفين وأجور العمل المؤقت أو الإضافي",
+    link: "./",
   },
   {
-    title: "ايراد البطائق الالكترونية",
-    description: "الإيرادات المتحصلة من بيع البطاقات الإلكترونية بأنواعها المختلفة، والتي تمثل مجموع المبالغ المحصلة وفق الأسعار المحددة لكل بطاقة.",
-    link: "./Selecttwo.tsx",
+    title: "المساهمة في الضمانات الاجتماعية",
+    description: "المبالغ المدفوعة للحكومة أو صناديق الضمان الاجتماعي عن الموظفين",
+    link: "./",
   },
   {
-    title: "التعاملات مع الجمهور",
-    description: "جميع التعاملات والخدمات المقدمة للجمهور، بما في ذلك الاستفسارات والمدفوعات والمعاملات اليومية لضمان رضا العملاء.",
+    title: "المصاريف السلعية",
+    description: "تكلفة شراء المواد والسلع اللازمة للإنتاج أو إعادة البيع بشكل دوري",
     link: "#",
   },
    {
-    title: "عمولة بيع البطائق",
-    description: "العمولة المستحقة عن عمليات بيع البطاقات الإلكترونية، المحسوبة كنسبة من قيمة كل عملية بيع وفق السياسات المعتمدة.",
-    link: "./Selectatthree.tsx",
+    title: "المصاريف الخدمية",
+    description: "تكاليف الخدمات المقدمة مثل الكهرباء، الماء، الإنترنت، والصيانة",
+    link: "./",
   },
   {
-    title: "بطاقة تعريف",
-    description: "العمولة المستحقة عن عمليات بيع البطاقات الإلكترونية، المحسوبة كنسبة من قيمة كل عملية بيع وفق السياسات المعتمدة.",
-    link: "./selectatfour.tsx",
+    title: "المصاريف التمويلية",
+    description: "تكاليف القروض والفوائد البنكية والعمولات المتعلقة بالتمويل والعمليات المالية",
+    link: "./",
+  },
+  {
+    title: "مصاريف اخرى",
+    description: "أي مصاريف لا تندرج ضمن البنود السابقة، مثل الهدايا أو التبرعات",
+    link: "./",
   },
 ];
 
-export default function FormElements() {
+function Expenses() {
   return (
     <div>
       <PageMeta
         title="React.js Form Elements Dashboard | TailAdmin - React.js Admin Dashboard Template"
         description="This is React.js Form Elements  Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
       />
-      <PageBreadcrumb pageTitle="تسجيل الايرادات " />
+      <PageBreadcrumb pageTitle="تسجيل المصاريف " />
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {cardData.map((card, index) => (
@@ -78,5 +82,7 @@ export default function FormElements() {
         ))}
       </div>
     </div>
-  );
+  )
 }
+
+export default Expenses

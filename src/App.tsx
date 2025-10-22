@@ -18,6 +18,14 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import CreateForm from "./pages/Forms/CreateForm";
+import Selectatt from "./components/ecommerce/Selectatt";
+import Selecttwo from "./components/ecommerce/Selecttwo";
+import Selectatthree from "./components/ecommerce/Selectatthree";
+import Selectatfour from "./components/ecommerce/Selectatfour";
+import Attreceiv from "./pages/receiving/Attreceiv";
+import Attreceivtow from "./pages/receiving/Attreceivtow";
+import Expenses from "./pages/expenses/Expenses";
 
 export default function App() {
   return (
@@ -36,6 +44,9 @@ export default function App() {
 
             {/* Forms */}
             <Route path="/form-elements" element={<FormElements />} />
+            <Route path="/Attreceiv" element={<Attreceiv />} />
+            <Route path="/Attreceivtow" element={<Attreceivtow />} />
+
 
             {/* Tables */}
             <Route path="/basic-tables" element={<BasicTables />} />
@@ -47,10 +58,18 @@ export default function App() {
             <Route path="/buttons" element={<Buttons />} />
             <Route path="/images" element={<Images />} />
             <Route path="/videos" element={<Videos />} />
+            <Route path="/Selectatt.tsx" element={<Selectatt />} />
+            <Route path="/Selecttwo.tsx" element={<Selecttwo />} />
+            <Route path='Selectatthree.tsx' element={<Selectatthree />} />
+            <Route path="/selectatfour.tsx" element={<Selectatfour />} />
+            <Route path="/expenses" element={<Expenses />} />
+
 
             {/* Charts */}
             <Route path="/line-chart" element={<LineChart />} />
             <Route path="/bar-chart" element={<BarChart />} />
+            <Route path="/createform" element={<CreateForm />} />
+
           </Route>
 
           {/* Auth Layout */}
@@ -58,9 +77,13 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
 
           {/* Fallback Route */}
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>
   );
 }
+
+
+
