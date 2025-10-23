@@ -71,10 +71,10 @@ function Selectatthree() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {cards.map((card, cardIndex) => (
           <ComponentCard
-            key={cardIndex}
-            title={card.title}
-            titletow="إنشاء جديد"
-          >
+  key={cardIndex}
+  title={card.title}
+  titletow="إنشاء جديد"
+>
             <div dir="rtl" className="space-y-5 max-w-xl mx-auto">
               {/* من حساب */}
               <div>
