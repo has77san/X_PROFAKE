@@ -1,4 +1,3 @@
-import React from "react";
 import Receiving from "../../components/ecommerce/Receiving";
 
 function Attreceiv() {

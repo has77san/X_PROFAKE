@@ -1,5 +1,3 @@
-import React from "react";
-
 function Receiving({
   branch = "رئيسي",
   deliveryCurrency = "دينار عراقي",
@@ -30,6 +28,36 @@ function Receiving({
   recipientReason = "",
 
   onSave = () => {},
+}: {
+  branch?: string;
+  deliveryCurrency?: string;
+  commissionType?: string;
+  commissionValue?: number;
+  transferCurrency?: string;
+  transferCommissionType?: string;
+  transferCommissionValue?: number;
+  incomingNumber?: string;
+  account?: string;
+  price?: number;
+  country?: string;
+  city?: string;
+
+  senderName?: string;
+  senderStatus?: string;
+  senderBank?: string;
+  senderPhone?: string;
+  senderAccount?: string;
+  senderReason?: string;
+
+  recipientName?: string;
+  recipientStatus?: string;
+  recipientBank?: string;
+  recipientPhone?: string;
+  recipientAccount?: string;
+  recipientRelation?: string;
+  recipientReason?: string;
+
+  onSave?: () => void;
 }) {
   const inputClass =
     "w-full border rounded-lg p-2 bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 transition-colors duration-300";
@@ -70,7 +98,11 @@ function Receiving({
 
         <div>
           <label className={labelClass}>قيمة العمولة %</label>
-          <input type="number" value={commissionValue} className={inputClass} />
+          <input
+            type="number"
+            value={commissionValue.toString()}
+            className={inputClass}
+          />
         </div>
       </div>
 
@@ -98,7 +130,11 @@ function Receiving({
 
         <div>
           <label className={labelClass}>قيمة العمولة %</label>
-          <input type="number" value={transferCommissionValue} className={inputClass} />
+          <input
+            type="number"
+            value={transferCommissionValue.toString()}
+            className={inputClass}
+          />
         </div>
 
         <div>
@@ -113,7 +149,7 @@ function Receiving({
 
         <div>
           <label className={labelClass}>السعر</label>
-          <input type="number" value={price} className={inputClass} />
+          <input type="number" value={price.toString()} className={inputClass} />
         </div>
 
         <div>
@@ -171,7 +207,7 @@ function Receiving({
 
         <div className="md:col-span-3">
           <label className={labelClass}>بيان السبب</label>
-          <textarea rows="2" value={senderReason} className={inputClass}></textarea>
+          <textarea rows={2} value={senderReason} className={inputClass}></textarea>
         </div>
       </div>
 
@@ -216,7 +252,7 @@ function Receiving({
 
         <div className="md:col-span-3">
           <label className={labelClass}>بيان السبب</label>
-          <textarea rows="2" value={recipientReason} className={inputClass}></textarea>
+          <textarea rows={2} value={recipientReason} className={inputClass}></textarea>
         </div>
       </div>
 

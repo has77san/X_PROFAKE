@@ -3,6 +3,10 @@ import ComponentCard from "../../components/common/ComponentCard";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 
+interface FormItem {
+  amount: string;
+}
+
 function Selectatt() {
   const cards = [
     { title: "دخول مزاد العملة" },
@@ -11,17 +15,25 @@ function Selectatt() {
     { title: "السحوبات" },
   ];
 
-  const [isVisible, setIsVisible] = useState(cards.map(() => false));
-  const [fromForms, setFromForms] = useState(cards.map(() => [{ amount: "" }]));
-  const [toForms, setToForms] = useState(cards.map(() => [{ amount: "" }]));
+  const [isVisible, setIsVisible] = useState<boolean[]>(cards.map(() => false));
+  const [fromForms, setFromForms] = useState<FormItem[][]>(
+    cards.map(() => [{ amount: "" }])
+  );
+  const [toForms, setToForms] = useState<FormItem[][]>(
+    cards.map(() => [{ amount: "" }])
+  );
 
   // ✅ إظهار أو إخفاء الكارد
-  const toggleVisibility = (index) => {
+  const toggleVisibility = (index: number) => {
     setIsVisible((prev) => prev.map((v, i) => (i === index ? !v : v)));
   };
 
   // ✅ إضافة صف جديد
-  const addNewForm = (cardIndex, formIndex, type) => {
+  const addNewForm = (
+    cardIndex: number,
+    formIndex: number,
+    type: "from" | "to"
+  ) => {
     if (type === "from") {
       setFromForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
@@ -38,7 +50,12 @@ function Selectatt() {
   };
 
   // ✅ تعديل القيم
-  const handleAmountChange = (cardIndex, formIndex, type, value) => {
+  const handleAmountChange = (
+    cardIndex: number,
+    formIndex: number,
+    type: "from" | "to",
+    value: string
+  ) => {
     if (type === "from") {
       setFromForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
@@ -55,7 +72,11 @@ function Selectatt() {
   };
 
   // ✅ حذف صف
-  const handleDeleteForm = (cardIndex, formIndex, type) => {
+  const handleDeleteForm = (
+    cardIndex: number,
+    formIndex: number,
+    type: "from" | "to"
+  ) => {
     if (type === "from") {
       setFromForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
@@ -105,17 +126,14 @@ function Selectatt() {
             {/* محتوى الكارد */}
             {isVisible[cardIndex] && (
               <ComponentCard title="">
-                <div dir="rtl" className="  space-y-5">
-
-                  {/* ✅ قسم من حساب */}
+                <div dir="rtl" className="space-y-5">
+                  {/* قسم من حساب */}
                   <div>
-                  
                     {fromForms[cardIndex].map((form, formIndex) => (
                       <form
                         key={`from-${cardIndex}-${formIndex}`}
                         className="flex items-center gap-3 mb-3"
                       >
-                        {/* المبلغ */}
                         <input
                           type="number"
                           placeholder="ادخل المبلغ"
@@ -132,11 +150,10 @@ function Selectatt() {
                             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         />
-                          <h4 className="font-semibold text-gray-800 dark:text-gray-200 w-[10%]">
-                      من ح /
-                    </h4>
+                        <h4 className="font-semibold text-gray-800 dark:text-gray-200 w-[10%]">
+                          من ح /
+                        </h4>
 
-                        {/* النوع */}
                         <select
                           dir="rtl"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
@@ -151,7 +168,6 @@ function Selectatt() {
                           <option value="ايرادات">ايرادات متنوعة</option>
                         </select>
 
-                        {/* أزرار */}
                         <div className="flex items-center gap-2">
                           <button
                             type="button"
@@ -176,15 +192,13 @@ function Selectatt() {
                     ))}
                   </div>
 
-                  {/* ✅ قسم إلى حساب */}
+                  {/* قسم إلى حساب */}
                   <div>
-                   
                     {toForms[cardIndex].map((form, formIndex) => (
                       <form
                         key={`to-${cardIndex}-${formIndex}`}
                         className="flex items-center gap-3 mb-3"
                       >
-                        {/* المبلغ */}
                         <input
                           type="number"
                           placeholder="ادخل المبلغ"
@@ -201,11 +215,10 @@ function Selectatt() {
                             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         />
-                         <h4 className="font-semibold w-[10%] text-gray-800 dark:text-gray-200 mb-3">
-                      إلى ح /
-                    </h4>
+                        <h4 className="font-semibold w-[10%] text-gray-800 dark:text-gray-200 mb-3">
+                          إلى ح /
+                        </h4>
 
-                        {/* النوع */}
                         <select
                           dir="rtl"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
@@ -220,7 +233,6 @@ function Selectatt() {
                           <option value="ايرادات">ايرادات متنوعة</option>
                         </select>
 
-                        {/* أزرار */}
                         <div className="flex items-center gap-2">
                           <button
                             type="button"

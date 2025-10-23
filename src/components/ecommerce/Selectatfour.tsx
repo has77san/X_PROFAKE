@@ -1,5 +1,5 @@
-import React from "react";
 import PageMeta from "../../components/common/PageMeta";
+
 function Selectatfour() {
   return (
     <>
@@ -8,7 +8,7 @@ function Selectatfour() {
         description="ID Card creation form with dark/light mode support"
       />
 
-      <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-colors duration-500 p-6">
+      <div className="min-h-screen flex items-center justify-center dark:bg-gray-900 transition-colors duration-500 p-6">
         <div className="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 w-full max-w-3xl transition-colors duration-500">
           <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100">
             بطاقة تعريف
@@ -27,15 +27,12 @@ function Selectatfour() {
               </select>
             </div>
 
-            {/* الاسم الكامل */}
+            {/* باقي الحقول */}
             <Input label="الاسم الكامل" type="text" />
-            {/* مكان الولادة */}
             <Input label="مكان الولادة" type="text" />
-            {/* صادرة عن */}
             <Input label="صادرة عن" type="text" />
-            {/* تاريخ الولادة */}
             <Input label="تاريخ الولادة" type="date" />
-            {/* الجنس */}
+
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 الجنس
@@ -47,35 +44,21 @@ function Selectatfour() {
               </select>
             </div>
 
-            {/* تاريخ الفتح */}
             <Input label="تاريخ الفتح" type="date" />
-            {/* رقم الهاتف */}
             <Input label="رقم الهاتف" type="tel" />
-            {/* البريد الإلكتروني */}
             <Input label="البريد الإلكتروني" type="email" />
-            {/* رقم بطاقة السكن */}
             <Input label="رقم بطاقة السكن" type="text" />
-            {/* رقم الهوية */}
             <Input label="رقم الهوية" type="text" />
-            {/* تاريخ الإصدار */}
             <Input label="تاريخ الإصدار" type="date" />
-            {/* اسم الأم */}
             <Input label="اسم الأم" type="text" />
-            {/* رقم التعريف */}
             <Input label="رقم التعريف" type="text" />
-            {/* تاريخ الانتهاء */}
             <Input label="تاريخ الانتهاء" type="date" />
-            {/* رقم الهاتف مرة ثانية */}
             <Input label="رقم الهاتف الثانوي" type="tel" />
-            {/* جهة الإصدار */}
             <Input label="جهة الإصدار" type="text" />
-            {/* البلد */}
             <Input label="البلد" type="text" />
-            {/* المحافظة */}
             <Input label="المحافظة" type="text" />
-            {/* الشارع */}
             <Input label="الشارع" type="text" />
-            {/* العنوان */}
+
             <div className="col-span-2">
               <Input label="العنوان الكامل" type="text" />
             </div>
@@ -92,11 +75,16 @@ function Selectatfour() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-// مكون صغير لتسهيل إدخال الحقول
-function Input({ label, type }) {
+// تعريف Props لتجنب خطأ TS
+interface InputProps {
+  label: string;
+  type: string;
+}
+
+function Input({ label, type }: InputProps) {
   return (
     <div>
       <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -111,5 +99,4 @@ function Input({ label, type }) {
   );
 }
 
-
-export default Selectatfour
+export default Selectatfour;

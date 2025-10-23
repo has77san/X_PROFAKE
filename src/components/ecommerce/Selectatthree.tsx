@@ -3,14 +3,26 @@ import ComponentCard from "../../components/common/ComponentCard";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 
+interface FormItem {
+  amount: string;
+}
+
 function Selectatthree() {
   const cards = [{ title: "بيع البطائق" }];
 
-  const [fromForms, setFromForms] = useState(cards.map(() => [{ amount: "" }]));
-  const [toForms, setToForms] = useState(cards.map(() => [{ amount: "" }]));
+  const [fromForms, setFromForms] = useState<FormItem[][]>(
+    cards.map(() => [{ amount: "" }])
+  );
+  const [toForms, setToForms] = useState<FormItem[][]>(
+    cards.map(() => [{ amount: "" }])
+  );
 
   // ✅ إضافة صف جديد
-  const addNewForm = (cardIndex, formIndex, type) => {
+  const addNewForm = (
+    cardIndex: number,
+    formIndex: number,
+    type: "from" | "to"
+  ) => {
     if (type === "from") {
       setFromForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
@@ -27,7 +39,12 @@ function Selectatthree() {
   };
 
   // ✅ تعديل المبلغ
-  const handleAmountChange = (cardIndex, formIndex, type, value) => {
+  const handleAmountChange = (
+    cardIndex: number,
+    formIndex: number,
+    type: "from" | "to",
+    value: string
+  ) => {
     if (type === "from") {
       setFromForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
@@ -44,7 +61,11 @@ function Selectatthree() {
   };
 
   // ✅ حذف صف
-  const handleDeleteForm = (cardIndex, formIndex, type) => {
+  const handleDeleteForm = (
+    cardIndex: number,
+    formIndex: number,
+    type: "from" | "to"
+  ) => {
     if (type === "from") {
       setFromForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
@@ -71,10 +92,10 @@ function Selectatthree() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {cards.map((card, cardIndex) => (
           <ComponentCard
-  key={cardIndex}
-  title={card.title}
-  titletow="إنشاء جديد"
->
+            key={cardIndex}
+            title={card.title}
+            titletow="إنشاء جديد"
+          >
             <div dir="rtl" className="space-y-5 max-w-xl mx-auto">
               {/* من حساب */}
               <div>

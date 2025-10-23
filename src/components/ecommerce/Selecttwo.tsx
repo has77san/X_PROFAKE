@@ -3,23 +3,35 @@ import ComponentCard from "../../components/common/ComponentCard";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 
+interface FormItem {
+  amount: string;
+}
+
 function Selecttwo() {
   const cards = [
     { title: "شحن البطائق الالكترونية" },
     { title: "سحب من بطاقة الزبون" },
   ];
 
-  const [isVisible, setIsVisible] = useState(cards.map(() => false));
-  const [fromForms, setFromForms] = useState(cards.map(() => [{ amount: "" }]));
-  const [toForms, setToForms] = useState(cards.map(() => [{ amount: "" }]));
+  const [isVisible, setIsVisible] = useState<boolean[]>(cards.map(() => false));
+  const [fromForms, setFromForms] = useState<FormItem[][]>(
+    cards.map(() => [{ amount: "" }])
+  );
+  const [toForms, setToForms] = useState<FormItem[][]>(
+    cards.map(() => [{ amount: "" }])
+  );
 
   // ✅ إظهار أو إخفاء الكارد
-  const toggleVisibility = (index) => {
+  const toggleVisibility = (index: number) => {
     setIsVisible((prev) => prev.map((v, i) => (i === index ? !v : v)));
   };
 
   // ✅ إضافة صف جديد تحت الصف الحالي
-  const addNewForm = (cardIndex, formIndex, type) => {
+  const addNewForm = (
+    cardIndex: number,
+    formIndex: number,
+    type: "from" | "to"
+  ) => {
     if (type === "from") {
       setFromForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
@@ -36,7 +48,12 @@ function Selecttwo() {
   };
 
   // ✅ تعديل القيم
-  const handleAmountChange = (cardIndex, formIndex, type, value) => {
+  const handleAmountChange = (
+    cardIndex: number,
+    formIndex: number,
+    type: "from" | "to",
+    value: string
+  ) => {
     if (type === "from") {
       setFromForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
@@ -53,7 +70,11 @@ function Selecttwo() {
   };
 
   // ✅ حذف صف
-  const handleDeleteForm = (cardIndex, formIndex, type) => {
+  const handleDeleteForm = (
+    cardIndex: number,
+    formIndex: number,
+    type: "from" | "to"
+  ) => {
     if (type === "from") {
       setFromForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
@@ -105,9 +126,8 @@ function Selecttwo() {
               <ComponentCard title="">
                 <div dir="rtl" className="space-y-5">
 
-                  {/* ✅ من حساب */}
+                  {/* من حساب */}
                   <div>
-                    
                     {fromForms[cardIndex].map((form, formIndex) => (
                       <form
                         key={`from-${cardIndex}-${formIndex}`}
@@ -130,8 +150,8 @@ function Selecttwo() {
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         />
                         <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-3">
-                      من ح /
-                    </h4>
+                          من ح /
+                        </h4>
                         <select
                           dir="rtl"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
@@ -170,9 +190,8 @@ function Selecttwo() {
                     ))}
                   </div>
 
-                  {/* ✅ إلى حساب */}
+                  {/* إلى حساب */}
                   <div>
-                    
                     {toForms[cardIndex].map((form, formIndex) => (
                       <form
                         key={`to-${cardIndex}-${formIndex}`}
@@ -195,8 +214,8 @@ function Selecttwo() {
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         />
                         <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-3">
-                      إلى ح /
-                    </h4>
+                          إلى ح /
+                        </h4>
                         <select
                           dir="rtl"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
@@ -234,6 +253,7 @@ function Selecttwo() {
                       </form>
                     ))}
                   </div>
+
                 </div>
               </ComponentCard>
             )}

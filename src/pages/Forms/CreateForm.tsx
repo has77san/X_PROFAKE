@@ -28,13 +28,10 @@ export default function CreateForm() {
               </select>
             </div>
 
-            {/* الاسم الكامل */}
+            {/* باقي الحقول */}
             <Input label="الاسم الكامل" type="text" />
-            {/* مكان الولادة */}
             <Input label="مكان الولادة" type="text" />
-            {/* صادرة عن */}
             <Input label="صادرة عن" type="text" />
-            {/* تاريخ الولادة */}
             <Input label="تاريخ الولادة" type="date" />
             {/* الجنس */}
             <div>
@@ -48,35 +45,20 @@ export default function CreateForm() {
               </select>
             </div>
 
-            {/* تاريخ الفتح */}
             <Input label="تاريخ الفتح" type="date" />
-            {/* رقم الهاتف */}
             <Input label="رقم الهاتف" type="tel" />
-            {/* البريد الإلكتروني */}
             <Input label="البريد الإلكتروني" type="email" />
-            {/* رقم بطاقة السكن */}
             <Input label="رقم بطاقة السكن" type="text" />
-            {/* رقم الهوية */}
             <Input label="رقم الهوية" type="text" />
-            {/* تاريخ الإصدار */}
             <Input label="تاريخ الإصدار" type="date" />
-            {/* اسم الأم */}
             <Input label="اسم الأم" type="text" />
-            {/* رقم التعريف */}
             <Input label="رقم التعريف" type="text" />
-            {/* تاريخ الانتهاء */}
             <Input label="تاريخ الانتهاء" type="date" />
-            {/* رقم الهاتف مرة ثانية */}
             <Input label="رقم الهاتف الثانوي" type="tel" />
-            {/* جهة الإصدار */}
             <Input label="جهة الإصدار" type="text" />
-            {/* البلد */}
             <Input label="البلد" type="text" />
-            {/* المحافظة */}
             <Input label="المحافظة" type="text" />
-            {/* الشارع */}
             <Input label="الشارع" type="text" />
-            {/* العنوان */}
             <div className="col-span-2">
               <Input label="العنوان الكامل" type="text" />
             </div>
@@ -96,8 +78,13 @@ export default function CreateForm() {
   );
 }
 
-// مكون صغير لتسهيل إدخال الحقول
-function Input({ label, type }) {
+// ✅ تعريف Props لمكون Input لتصحيح أخطاء TypeScript
+interface InputProps {
+  label: string;
+  type: string;
+}
+
+function Input({ label, type }: InputProps) {
   return (
     <div>
       <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
