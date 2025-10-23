@@ -23,47 +23,33 @@ import {
 import { useSidebar } from "../context/SidebarContext";
 import SidebarWidget from "./SidebarWidget";
 
+// 🟢 تعريف TypeScript للـ Nav Items
+interface SubItem {
+  name: string;
+  path: string;
+  subItems?: SubItem[];
+}
+
+interface NavItem {
+  icon: JSX.Element;
+  name: string;
+  path?: string;
+  subItems?: SubItem[];
+}
+
 // ✅ القوائم الرئيسية
-const navItems = [
-  {
-    icon: <LayoutDashboard />,
-    name: "الصفحة الرئيسية",
-    path: "/",
-  },
-  {
-    icon: <CalendarDays />,
-    name: "ملف الحسابات",
-    path: "/calendar",
-  },
-  {
-    icon: <UserCircle />,
-    name: "صيرفة",
-    path: "/profile",
-  },
-  {
-    icon: <List />,
-    name: "تسجيل الايرادات",
-    path: "/form-elements",
-  },
-  {
-    icon: <Table />,
-    name: "تسجيل المصاريف",
-    path: "/expenses",
-  },
-  {
-    icon: <FileText />,
-    name: "الموجودات الثابته",
-    path: "/blank",
-  },
+const navItems: NavItem[] = [
+  { icon: <LayoutDashboard />, name: "الصفحة الرئيسية", path: "/" },
+  { icon: <CalendarDays />, name: "ملف الحسابات", path: "/calendar" },
+  { icon: <UserCircle />, name: "صيرفة", path: "/profile" },
+  { icon: <List />, name: "تسجيل الايرادات", path: "/form-elements" },
+  { icon: <Table />, name: "تسجيل المصاريف", path: "/expenses" },
+  { icon: <FileText />, name: "الموجودات الثابته", path: "/blank" },
 ];
 
 // ✅ القوائم الأخرى
-const othersItems = [
-  {
-    icon: <BarChart3 />,
-    name: "الاندثارات",
-    path: "/line-chart",
-  },
+const othersItems: NavItem[] = [
+  { icon: <BarChart3 />, name: "الاندثارات", path: "/line-chart" },
   {
     icon: <Box />,
     name: "الاطفاءات",
@@ -76,24 +62,12 @@ const othersItems = [
       { name: "Videos", path: "/videos" },
     ],
   },
-  {
-    icon: <TrendingUp />,
-    name: "الامتثال",
-    path: "/line-chart",
-  },
-  {
-    icon: <Coins />,
-    name: "تسليم حوالة",
-    path: "/Attreceivtow",
-  },
-  {
-    icon: <Coins />,
-    name: "استلام حوالة",
-    path: "/Attreceiv",
-  },
+  { icon: <TrendingUp />, name: "الامتثال", path: "/line-chart" },
+  { icon: <Coins />, name: "تسليم حوالة", path: "/Attreceivtow" },
+  { icon: <Coins />, name: "استلام حوالة", path: "/Attreceiv" },
   {
     icon: <FolderOpen />,
-    name: "السجلات المحاسبة ",
+    name: "السجلات المحاسبة",
     subItems: [
       { name: "سجل اليومية العام", path: "/" },
       { name: "سجل الاسناد العام", path: "/" },
@@ -106,7 +80,7 @@ const othersItems = [
     name: "ميزان المراجعة",
     subItems: [
       {
-        name: "ميزان المراجعة قبل ",
+        name: "ميزان المراجعة قبل",
         path: "/",
         subItems: [
           { name: "ارصدة", path: "/" },
@@ -117,21 +91,9 @@ const othersItems = [
       { name: "ميزان مراجعة لفترة محددة", path: "/" },
     ],
   },
-  {
-    icon: <ClipboardList />,
-    name: "التسويات القيدية",
-    path: "/",
-  },
-  {
-    icon: <LogIn />,
-    name: "تسجيل دخول",
-    path: "/signin",
-  },
-  {
-    icon: <LogOut />,
-    name: "تسجيل خروج",
-    path: "/signup",
-  },
+  { icon: <ClipboardList />, name: "التسويات القيدية", path: "/" },
+  { icon: <LogIn />, name: "تسجيل دخول", path: "/signin" },
+  { icon: <LogOut />, name: "تسجيل خروج", path: "/signup" },
 ];
 
 const AppSidebar: React.FC = () => {
@@ -159,7 +121,6 @@ const AppSidebar: React.FC = () => {
         }
       });
     });
-
     if (!submenuMatched) setOpenSubmenu(null);
   }, [location, isActive]);
 
@@ -181,7 +142,7 @@ const AppSidebar: React.FC = () => {
     );
   };
 
-  const renderMenuItems = (items: any[], menuType: "main" | "others") => (
+  const renderMenuItems = (items: NavItem[], menuType: "main" | "others") => (
     <ul className="flex flex-col gap-4">
       {items.map((nav, index) => (
         <li key={nav.name}>
