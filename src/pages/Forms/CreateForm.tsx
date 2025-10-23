@@ -1,4 +1,3 @@
-import React from "react";
 import PageMeta from "../../components/common/PageMeta";
 
 export default function CreateForm() {
@@ -33,6 +32,7 @@ export default function CreateForm() {
             <Input label="مكان الولادة" type="text" />
             <Input label="صادرة عن" type="text" />
             <Input label="تاريخ الولادة" type="date" />
+
             {/* الجنس */}
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">

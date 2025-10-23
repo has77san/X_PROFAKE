@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function Receiving_tow() {
-
-    const [senderStatus, setSenderStatus] = useState("");
+  const [senderStatus, setSenderStatus] = useState("");
   const [receiverStatus, setReceiverStatus] = useState("");
   const [bankName, setBankName] = useState("");
   const [phone, setPhone] = useState("");
@@ -13,7 +12,6 @@ function Receiving_tow() {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [agent, setAgent] = useState("");
-  const [agentExists, setAgentExists] = useState(false);
   const [deliveryCurrency, setDeliveryCurrency] = useState("");
   const [deliveryAmount, setDeliveryAmount] = useState("");
   const [deliveryCommissionType, setDeliveryCommissionType] = useState("");
@@ -29,9 +27,8 @@ function Receiving_tow() {
 
   const [total, setTotal] = useState("");
 
-
   return (
-   <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-6">
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-6">
       {/* معلومات المرسل والمستفيد */}
       <div className="border p-4 rounded-lg space-y-4">
         <h2 className="font-bold text-lg">معلومات المرسل والمستفيد</h2>
@@ -155,18 +152,6 @@ function Receiving_tow() {
               onChange={(e) => setAgent(e.target.value)}
               className="w-full border rounded p-2"
             />
-          </div>
-
-          <div className=" items-center space-x-2">
-             <label className="block mb-1">الوكيل</label>
-            <select
-              value={deliveryCurrency}
-              onChange={(e) => setDeliveryCurrency(e.target.value)}
-              className="w-full border rounded p-2"
-            >
-              <option value="دينار"> يوجد</option>
-              <option value="دولار">لا يوجد</option>
-            </select>
           </div>
 
           <div>
@@ -313,7 +298,7 @@ function Receiving_tow() {
         />
       </div>
     </div>
-  )
+  );
 }
 
-export default Receiving_tow
+export default Receiving_tow;
