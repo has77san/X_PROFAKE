@@ -58,10 +58,10 @@ export default function App() {
             <Route path="/buttons" element={<Buttons />} />
             <Route path="/images" element={<Images />} />
             <Route path="/videos" element={<Videos />} />
-            <Route path="/Selectatt.tsx" element={<Selectatt />} />
-            <Route path="/Selecttwo.tsx" element={<Selecttwo />} />
-            <Route path='Selectatthree.tsx' element={<Selectatthree />} />
-            <Route path="/selectatfour.tsx" element={<Selectatfour />} />
+            <Route path="/Selectatt" element={<Selectatt />} />
+            <Route path="/Selecttwo" element={<Selecttwo />} />
+            <Route path='Selectatthree' element={<Selectatthree />} />
+            <Route path="/selectatfour" element={<Selectatfour />} />
             <Route path="/expenses" element={<Expenses />} />
 
 
