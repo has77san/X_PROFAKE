@@ -41,7 +41,7 @@ const navItems: NavItem[] = [
   { icon: <CalendarDays />, name: "ملف الحسابات", path: "/calendar" },
   { icon: <List />, name: "تسجيل الايرادات", path: "/form-elements" },
   { icon: <Table />, name: "تسجيل المصاريف", path: "/expenses" },
-  { icon: <FileText />, name: "الموجودات الثابته", path: "/profile" },
+  { icon: <FileText />, name: "الموجودات الثابته", path: "/Expenses_six" },
 ];
 
 // ✅ القوائم الأخرى
