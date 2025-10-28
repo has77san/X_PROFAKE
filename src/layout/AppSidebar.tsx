@@ -43,7 +43,7 @@ const navItems: NavItem[] = [
   { icon: <UserCircle />, name: "صيرفة", path: "/profile" },
   { icon: <List />, name: "تسجيل الايرادات", path: "/form-elements" },
   { icon: <Table />, name: "تسجيل المصاريف", path: "/expenses" },
-  { icon: <FileText />, name: "الموجودات الثابته", path: "/blank" },
+  { icon: <FileText />, name: "الموجودات الثابته", path: "/Expenses_six" },
 ];
 
 // ✅ القوائم الأخرى

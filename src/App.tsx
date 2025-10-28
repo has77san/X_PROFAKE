@@ -26,6 +26,12 @@ import Selectatfour from "./components/ecommerce/Selectatfour";
 import Attreceiv from "./pages/receiving/Attreceiv";
 import Attreceivtow from "./pages/receiving/Attreceivtow";
 import Expenses from "./pages/expenses/Expenses";
+import Salaries from "./components/ecommerce/Salaries";
+import Expensestow from "./components/ecommerce/Expensestow";
+import Expensesthree from "./components/ecommerce/Expensesthree";
+import Expensesfour from "./components/ecommerce/Expensesfour";
+import Expensesfive from "./components/ecommerce/Expensesfive";
+import Expenses_six from "./components/ecommerce/Expenses_six";
 
 export default function App() {
   return (
@@ -56,11 +62,22 @@ export default function App() {
           <Route path="/buttons" element={<Buttons />} />
           <Route path="/images" element={<Images />} />
           <Route path="/videos" element={<Videos />} />
+           {/* تسجيل الايرادات */}
           <Route path="/selectatt" element={<Selectatt />} />
           <Route path="/selecttwo" element={<Selecttwo />} />
           <Route path="/selectatthree" element={<Selectatthree />} />
           <Route path="/selectatfour" element={<Selectatfour />} />
           <Route path="/expenses" element={<Expenses />} />
+
+           {/* تسجيل المصاريف */}
+
+          <Route path="/Salaries" element={<Salaries />} />
+          <Route path="/Expensestow" element={<Expensestow />} />
+          <Route path="/Expensesthree" element={<Expensesthree />} />
+          <Route path="/Expensesfour" element={<Expensesfour />} />
+          <Route path="/Expensesfive" element={<Expensesfive />} />
+          <Route path="/Expenses_six" element={<Expenses_six />} />
+
 
           {/* Charts */}
           <Route path="/line-chart" element={<LineChart />} />
