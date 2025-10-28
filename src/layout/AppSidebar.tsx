@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router";
 import {
   LayoutDashboard,
   CalendarDays,
-  UserCircle,
   List,
   Table,
   FileText,
