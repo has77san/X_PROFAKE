@@ -13,18 +13,12 @@ interface CardItem {
   optionsTo: string[];
 }
 
-function Selecttwo() {
+function Selectattseven() {
   const cards: CardItem[] = [
     {
-      title: "شحن بطائق ",
+      title: "استلام من الفروع ",
       optionsFrom: ["نقدية بالصندوق"],
-      optionsTo: ["نقدية لدى المصارف" , "عمولة شحن"],
-    },
-
-    {
-      title: "سحب من بطاقة الزبون ",
-      optionsFrom: ["نقدية لدى المصارف"],
-      optionsTo: ["نقدية بالصندوق" , "عمولة البطائق"],
+      optionsTo: ["حسابات جارية مدينة متبادلة (فرع)" ],
     },
  
    
@@ -113,7 +107,7 @@ function Selecttwo() {
         title="إيرادات البطائق الإلكترونية"
         description="صفحة إدارة الإيرادات باستخدام React.js"
       />
-      <PageBreadcrumb pageTitle="إيراد البطائق الإلكترونية" />
+      <PageBreadcrumb pageTitle="" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {cards.map((card, cardIndex) => (
@@ -279,4 +273,4 @@ function Selecttwo() {
   );
 }
 
-export default Selecttwo;
+export default Selectattseven;

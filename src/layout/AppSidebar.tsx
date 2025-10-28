@@ -40,10 +40,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   { icon: <LayoutDashboard />, name: "الصفحة الرئيسية", path: "/" },
   { icon: <CalendarDays />, name: "ملف الحسابات", path: "/calendar" },
-  { icon: <UserCircle />, name: "صيرفة", path: "/profile" },
   { icon: <List />, name: "تسجيل الايرادات", path: "/form-elements" },
   { icon: <Table />, name: "تسجيل المصاريف", path: "/expenses" },
-  { icon: <FileText />, name: "الموجودات الثابته", path: "/Expenses_six" },
+  { icon: <FileText />, name: "الموجودات الثابته", path: "/profile" },
 ];
 
 // ✅ القوائم الأخرى

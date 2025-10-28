@@ -3,16 +3,40 @@ import ComponentCard from "../../components/common/ComponentCard";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 
+
+
 interface FormItem {
   amount: string;
 }
 
+interface CardItem {
+  title: string;
+  optionsFrom: string[];
+  optionsTo: string[];
+}
+
 function Selectatt() {
-  const cards = [
-    { title: "دخول مزاد العملة" },
-    { title: "الإيداعات" },
-    { title: "بيع مزاد العملة" },
-    { title: "السحوبات" },
+ const cards: CardItem[] = [
+    {
+      title: "دخول مزاد العملة",
+      optionsFrom: ["مدينون", "مصرف"],
+      optionsTo: ["الصندوق" ],
+    },
+    {
+      title: "بيع مزاد العملة",
+      optionsFrom: ["الصندوق"],
+      optionsTo: ["مدينون", "مصرف"],
+    },
+    {
+      title: "الايداعات",
+      optionsFrom: ["نقدية لدى المصارف"],
+      optionsTo: ["الصندوق" ],
+    },
+    {
+      title: "السحوبات",
+      optionsFrom: ["الصندوق"],
+      optionsTo: ["نقدية لدى المصارف"],
+    },
   ];
 
   const [isVisible, setIsVisible] = useState<boolean[]>(cards.map(() => false));
@@ -160,12 +184,11 @@ function Selectatt() {
                             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         >
-                          <option value="">اختر النوع</option>
-                          <option value="مدينون">مدينون</option>
-                          <option value="نقدية">نقدية بالصندوق</option>
-                          <option value="عمولة">عمولة المزاد</option>
-                          <option value="مصارف">نقدية لدى المصارف</option>
-                          <option value="ايرادات">ايرادات متنوعة</option>
+                        {card.optionsFrom.map((opt, i) => (
+                            <option key={i} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
                         </select>
 
                         <div className="flex items-center gap-2">
@@ -225,12 +248,11 @@ function Selectatt() {
                             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         >
-                          <option value="">اختر النوع</option>
-                          <option value="مدينون">مدينون</option>
-                          <option value="نقدية">نقدية بالصندوق</option>
-                          <option value="عمولة">عمولة المزاد</option>
-                          <option value="مصارف">نقدية لدى المصارف</option>
-                          <option value="ايرادات">ايرادات متنوعة</option>
+                         {card.optionsTo.map((opt, i) => (
+                            <option key={i} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
                         </select>
 
                         <div className="flex items-center gap-2">

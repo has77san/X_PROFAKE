@@ -13,18 +13,12 @@ interface CardItem {
   optionsTo: string[];
 }
 
-function Selecttwo() {
+function Selectatfive() {
   const cards: CardItem[] = [
     {
-      title: "شحن بطائق ",
-      optionsFrom: ["نقدية بالصندوق"],
-      optionsTo: ["نقدية لدى المصارف" , "عمولة شحن"],
-    },
-
-    {
-      title: "سحب من بطاقة الزبون ",
+      title: "سحب بطاقة الزبون ",
       optionsFrom: ["نقدية لدى المصارف"],
-      optionsTo: ["نقدية بالصندوق" , "عمولة البطائق"],
+      optionsTo: ["نقدية بالصندوق" ,"عمولة البطائق" ],
     },
  
    
@@ -279,4 +273,4 @@ function Selecttwo() {
   );
 }
 
-export default Selecttwo;
+export default Selectatfive;
