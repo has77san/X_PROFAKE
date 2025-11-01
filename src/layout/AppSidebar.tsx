@@ -59,9 +59,9 @@ const othersItems: NavItem[] = [
       { name: "Videos", path: "/videos" },
     ],
   },
-  { icon: <TrendingUp />, name: "الامتثال", path: "/line-chart" },
-  { icon: <Coins />, name: "تسليم حوالة", path: "/Attreceivtow" },
-  { icon: <Coins />, name: "استلام حوالة", path: "/Attreceiv" },
+  { icon: <TrendingUp />, name: "الامتثال", path: "/Compliance" },
+  { icon: <Coins />, name: "التحويل الى الفروع", path: "/Selectattsix" },
+  { icon: <Coins />, name: "استلام من الفروع", path: "/Selectattseven" },
   {
     icon: <FolderOpen />,
     name: "السجلات المحاسبة",

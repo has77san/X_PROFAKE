@@ -34,6 +34,7 @@ import Expensesfive from "./components/ecommerce/Expensesfive";
 import Expenses_six from "./components/ecommerce/Expenses_six";
 import Selectattsix from "./components/ecommerce/Selectattsix";
 import Selectattseven from "./components/ecommerce/Selectattseven";
+import Compliance from "./components/ecommerce/Compliance";
 
 export default function App() {
   return (
@@ -72,6 +73,7 @@ export default function App() {
           <Route path="/expenses" element={<Expenses />} />
           <Route path="/Selectattsix" element={<Selectattsix />} />
           <Route path="/Selectattseven" element={<Selectattseven />} />
+          <Route path="/Compliance" element={<Compliance />} />
 
 
            {/* تسجيل المصاريف */}
