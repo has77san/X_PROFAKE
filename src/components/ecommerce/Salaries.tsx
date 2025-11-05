@@ -11,6 +11,7 @@ interface CardItem {
   title: string;
   optionsFrom: string[];
   optionsTo: string[];
+  description: string; // ✅ أضفنا وصف لكل كارد
 }
 
 function Salaries() {
@@ -18,12 +19,16 @@ function Salaries() {
     {
       title: "تسجيل الرواتب",
       optionsFrom: ["رواتب والاجور"],
-      optionsTo: ["نقدية بالصندوق" , "الدائنون"],
+      optionsTo: ["نقدية بالصندوق", "الدائنون"],
+      description:
+        "يتم استخدام لتسجيل دفع رواتب الموظفين خلال الفترة المحددة. يمثل هذا المبلغ إجمالي الرواتب المخصصة لكل موظف ويُسجّل في الحسابات المالية.",
     },
     {
       title: "تسجيل الاجور",
       optionsFrom: ["رواتب والاجور"],
-      optionsTo: ["نقدية بالصندوق" , "الدائنون"],
+      optionsTo: ["نقدية بالصندوق", "الدائنون"],
+      description:
+        "يتم استخدام لتسجيل دفع أجور الموظفين خلال الفترة. يتم توثيق المبالغ المدفوعة ضمن الحسابات لضمان متابعة المصاريف بدقة.",
     },
   ];
 
@@ -35,12 +40,10 @@ function Salaries() {
     cards.map(() => [{ amount: "" }])
   );
 
-  // ✅ إظهار أو إخفاء الكارد
   const toggleVisibility = (index: number) => {
     setIsVisible((prev) => prev.map((v, i) => (i === index ? !v : v)));
   };
 
-  // ✅ إضافة صف جديد
   const addNewForm = (cardIndex: number, formIndex: number, type: "from" | "to") => {
     if (type === "from") {
       setFromForms((prev) => {
@@ -57,7 +60,6 @@ function Salaries() {
     }
   };
 
-  // ✅ تعديل القيم
   const handleAmountChange = (
     cardIndex: number,
     formIndex: number,
@@ -79,7 +81,6 @@ function Salaries() {
     }
   };
 
-  // ✅ حذف صف
   const handleDeleteForm = (cardIndex: number, formIndex: number, type: "from" | "to") => {
     if (type === "from") {
       setFromForms((prev) => {
@@ -236,6 +237,11 @@ function Salaries() {
                         </div>
                       </form>
                     ))}
+
+                    {/* ✅ صندوق الوصف أسفل "إلى ح /" */}
+                    <div className="mt-4 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                      {card.description}
+                    </div>
                   </div>
                 </div>
               </ComponentCard>

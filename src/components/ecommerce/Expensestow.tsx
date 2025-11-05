@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import ComponentCard from "../../components/common/ComponentCard";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
@@ -12,16 +11,18 @@ interface CardItem {
   title: string;
   optionsFrom: string[];
   optionsTo: string[];
+  description: string; // ✅ أضفنا وصف لكل كارد
 }
 
 function Expensestow() {
   const cards: CardItem[] = [
     {
       title: "المساهمة في الضمان",
-      optionsFrom: ["تامين الموظفين" , "تامين العمال"],
-      optionsTo: ["نقدية بالصندوق" , "الدائنون"],
+      optionsFrom: ["تامين الموظفين", "تامين العمال"],
+      optionsTo: ["نقدية بالصندوق", "الدائنون"],
+      description:
+        "يُستخدم لتسجيل وحساب مبلغ المساهمة في الضمان الاجتماعي للموظفين خلال الفترة المحددة. يتم تحديد المبلغ لكل موظف أو عامل حسب القوانين المعمول بها، ويُسجّل في الحسابات المالية لضمان تتبع الالتزامات الاجتماعية بدقة.",
     },
-    
   ];
 
   const [isVisible, setIsVisible] = useState<boolean[]>(cards.map(() => false));
@@ -233,6 +234,11 @@ function Expensestow() {
                         </div>
                       </form>
                     ))}
+
+                    {/* ✅ صندوق الوصف أسفل "إلى ح /" */}
+                    <div className="mt-4 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                      {card.description}
+                    </div>
                   </div>
                 </div>
               </ComponentCard>

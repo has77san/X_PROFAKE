@@ -11,23 +11,25 @@ interface CardItem {
   title: string;
   optionsFrom: string[];
   optionsTo: string[];
+  description: string; // ✅ إضافة الوصف
 }
 
 function Selecttwo() {
   const cards: CardItem[] = [
     {
-      title: "شحن بطائق ",
+      title: "شحن بطائق",
       optionsFrom: ["نقدية بالصندوق"],
-      optionsTo: ["نقدية لدى المصارف" , "عمولة شحن"],
+      optionsTo: ["نقدية لدى المصارف", "عمولة شحن"],
+      description:
+        "تستخدم هذه العملية لتسجيل شحن البطائق الإلكترونية عبر المصارف. يتم تحويل المبالغ من الصندوق إلى الحسابات المصرفية المعتمدة، مع احتساب عمولة الشحن ضمن القيود اليومية.",
     },
-
     {
-      title: "سحب من بطاقة الزبون ",
+      title: "سحب من بطاقة الزبون",
       optionsFrom: ["نقدية لدى المصارف"],
-      optionsTo: ["نقدية بالصندوق" , "عمولة البطائق"],
+      optionsTo: ["نقدية بالصندوق", "عمولة البطائق"],
+      description:
+        "يُسجل هذا الإجراء عند قيام الزبون بالسحب من بطاقته الإلكترونية. يتم سحب المبلغ من الحساب المصرفي وإيداعه في الصندوق، مع إدراج عمولة البطاقة ضمن الإيرادات التشغيلية.",
     },
- 
-   
   ];
 
   const [isVisible, setIsVisible] = useState<boolean[]>(cards.map(() => false));
@@ -38,12 +40,10 @@ function Selecttwo() {
     cards.map(() => [{ amount: "" }])
   );
 
-  // ✅ إظهار أو إخفاء الكارد
   const toggleVisibility = (index: number) => {
     setIsVisible((prev) => prev.map((v, i) => (i === index ? !v : v)));
   };
 
-  // ✅ إضافة صف جديد تحت الصف الحالي
   const addNewForm = (
     cardIndex: number,
     formIndex: number,
@@ -64,7 +64,6 @@ function Selecttwo() {
     }
   };
 
-  // ✅ تعديل القيم
   const handleAmountChange = (
     cardIndex: number,
     formIndex: number,
@@ -86,7 +85,6 @@ function Selecttwo() {
     }
   };
 
-  // ✅ حذف صف
   const handleDeleteForm = (
     cardIndex: number,
     formIndex: number,
@@ -142,7 +140,6 @@ function Selecttwo() {
             {isVisible[cardIndex] && (
               <ComponentCard title="">
                 <div dir="rtl" className="space-y-5">
-
                   {/* من حساب */}
                   <div>
                     {fromForms[cardIndex].map((form, formIndex) => (
@@ -238,7 +235,7 @@ function Selecttwo() {
                             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         >
-                         {card.optionsTo.map((opt, i) => (
+                          {card.optionsTo.map((opt, i) => (
                             <option key={i} value={opt}>
                               {opt}
                             </option>
@@ -267,8 +264,14 @@ function Selecttwo() {
                         </div>
                       </form>
                     ))}
-                  </div>
 
+                    {/* ✅ بوكس الوصف تحت قسم إلى حساب */}
+                    <div className="mt-4 p-3 rounded-lg bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600">
+                      <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                        {card.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </ComponentCard>
             )}

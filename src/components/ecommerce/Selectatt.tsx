@@ -3,8 +3,6 @@ import ComponentCard from "../../components/common/ComponentCard";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 
-
-
 interface FormItem {
   amount: string;
 }
@@ -13,29 +11,38 @@ interface CardItem {
   title: string;
   optionsFrom: string[];
   optionsTo: string[];
+  description: string;
 }
 
 function Selectatt() {
- const cards: CardItem[] = [
+  const cards: CardItem[] = [
     {
       title: "دخول مزاد العملة",
       optionsFrom: ["مدينون", "مصرف"],
-      optionsTo: ["الصندوق" ],
+      optionsTo: ["الصندوق"],
+      description:
+        "يمثل دخول مزاد العملة عمليات الإيداع بالمصارف لغرض شراء العملة الأجنبية. يتم فيه تسجيل المبالغ الداخلة من الجهات المشاركة في المزاد.",
     },
     {
       title: "بيع مزاد العملة",
       optionsFrom: ["الصندوق"],
       optionsTo: ["مدينون", "مصرف"],
+      description:
+        "يُستخدم هذا القسم لاحتساب مبلغ بيع العملة للمسافرين والشركات. تتم فيه عمليات خصم المبالغ من الصندوق وتحويلها إلى المصارف أو العملاء.",
     },
     {
       title: "الايداعات",
       optionsFrom: ["نقدية لدى المصارف"],
-      optionsTo: ["الصندوق" ],
+      optionsTo: ["الصندوق"],
+      description:
+        "تمثل الإيداعات المبالغ التي يتم تحويلها من النقدية في المصارف إلى الصندوق، كجزء من العمليات اليومية للمصرف.",
     },
     {
       title: "السحوبات",
       optionsFrom: ["الصندوق"],
       optionsTo: ["نقدية لدى المصارف"],
+      description:
+        "تشير السحوبات إلى المبالغ المسحوبة من الصندوق لغرض تغذية حسابات المصارف، وتعتبر جزءًا من الدورة النقدية التشغيلية.",
     },
   ];
 
@@ -47,12 +54,10 @@ function Selectatt() {
     cards.map(() => [{ amount: "" }])
   );
 
-  // ✅ إظهار أو إخفاء الكارد
   const toggleVisibility = (index: number) => {
     setIsVisible((prev) => prev.map((v, i) => (i === index ? !v : v)));
   };
 
-  // ✅ إضافة صف جديد
   const addNewForm = (
     cardIndex: number,
     formIndex: number,
@@ -64,7 +69,7 @@ function Selectatt() {
         copy[cardIndex].splice(formIndex + 1, 0, { amount: "" });
         return copy;
       });
-    } else if (type === "to") {
+    } else {
       setToForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
         copy[cardIndex].splice(formIndex + 1, 0, { amount: "" });
@@ -73,7 +78,6 @@ function Selectatt() {
     }
   };
 
-  // ✅ تعديل القيم
   const handleAmountChange = (
     cardIndex: number,
     formIndex: number,
@@ -95,7 +99,6 @@ function Selectatt() {
     }
   };
 
-  // ✅ حذف صف
   const handleDeleteForm = (
     cardIndex: number,
     formIndex: number,
@@ -131,20 +134,25 @@ function Selectatt() {
             className="rounded-2xl shadow-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transition-colors duration-300"
           >
             {/* عنوان الكارد وزر الإظهار */}
-            <div className="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
-                {card.title}
-              </h3>
-              <button
-                onClick={() => toggleVisibility(cardIndex)}
-                className="border border-gray-300 dark:border-gray-600 
-                  bg-gray-50 dark:bg-gray-700 
-                  text-gray-800 dark:text-white 
-                  px-4 py-1.5 rounded-lg 
-                  transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-600"
-              >
-                {isVisible[cardIndex] ? "إخفاء" : "إنشاء جديد"}
-              </button>
+            <div className="flex flex-col px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+                  {card.title}
+                </h3>
+                <button
+                  onClick={() => toggleVisibility(cardIndex)}
+                  className="border border-gray-300 dark:border-gray-600 
+                    bg-gray-50 dark:bg-gray-700 
+                    text-gray-800 dark:text-white 
+                    px-4 py-1.5 rounded-lg 
+                    transition duration-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                >
+                  {isVisible[cardIndex] ? "إخفاء" : "إنشاء جديد"}
+                </button>
+              </div>
+
+              {/* ✅ صندوق الشرح */}
+              
             </div>
 
             {/* محتوى الكارد */}
@@ -184,12 +192,14 @@ function Selectatt() {
                             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         >
-                        {card.optionsFrom.map((opt, i) => (
+                          {card.optionsFrom.map((opt, i) => (
                             <option key={i} value={opt}>
                               {opt}
                             </option>
+                            
                           ))}
                         </select>
+
 
                         <div className="flex items-center gap-2">
                           <button
@@ -211,6 +221,7 @@ function Selectatt() {
                             X
                           </button>
                         </div>
+                        
                       </form>
                     ))}
                   </div>
@@ -248,7 +259,7 @@ function Selectatt() {
                             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         >
-                         {card.optionsTo.map((opt, i) => (
+                          {card.optionsTo.map((opt, i) => (
                             <option key={i} value={opt}>
                               {opt}
                             </option>
@@ -275,9 +286,14 @@ function Selectatt() {
                             X
                           </button>
                         </div>
+                        
                       </form>
+                      
                     ))}
                   </div>
+                  <p className="mt-3 text-sm text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 p-3 rounded-lg border border-gray-200 dark:border-gray-600 leading-relaxed">
+                {card.description}
+              </p>
                 </div>
               </ComponentCard>
             )}

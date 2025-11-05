@@ -11,6 +11,7 @@ interface CardItem {
   title: string;
   optionsFrom: string[];
   optionsTo: string[];
+  description: string; // ✅ أضفنا وصف لكل كارد
 }
 
 function Selectatthree() {
@@ -18,10 +19,10 @@ function Selectatthree() {
     {
       title: "بيع البطائق ",
       optionsFrom: ["نقدية بالصندوق"],
-      optionsTo: ["عمولات بيع البطائق الالكترونية" ],
+      optionsTo: ["عمولات بيع البطائق الالكترونية"],
+      description:
+        "يتضمن هذا الكارد تسجيل عملية بيع البطائق الإلكترونية من خلال الصندوق. تمثل الإيرادات الناتجة من هذه العمليات عمولات بيع تُضاف إلى حساب الأرباح.",
     },
- 
-   
   ];
 
   const [isVisible, setIsVisible] = useState<boolean[]>(cards.map(() => false));
@@ -32,12 +33,10 @@ function Selectatthree() {
     cards.map(() => [{ amount: "" }])
   );
 
-  // ✅ إظهار أو إخفاء الكارد
   const toggleVisibility = (index: number) => {
     setIsVisible((prev) => prev.map((v, i) => (i === index ? !v : v)));
   };
 
-  // ✅ إضافة صف جديد تحت الصف الحالي
   const addNewForm = (
     cardIndex: number,
     formIndex: number,
@@ -49,7 +48,7 @@ function Selectatthree() {
         copy[cardIndex].splice(formIndex + 1, 0, { amount: "" });
         return copy;
       });
-    } else if (type === "to") {
+    } else {
       setToForms((prev) => {
         const copy = prev.map((arr) => [...arr]);
         copy[cardIndex].splice(formIndex + 1, 0, { amount: "" });
@@ -58,7 +57,6 @@ function Selectatthree() {
     }
   };
 
-  // ✅ تعديل القيم
   const handleAmountChange = (
     cardIndex: number,
     formIndex: number,
@@ -80,7 +78,6 @@ function Selectatthree() {
     }
   };
 
-  // ✅ حذف صف
   const handleDeleteForm = (
     cardIndex: number,
     formIndex: number,
@@ -136,7 +133,6 @@ function Selectatthree() {
             {isVisible[cardIndex] && (
               <ComponentCard title="">
                 <div dir="rtl" className="space-y-5">
-
                   {/* من حساب */}
                   <div>
                     {fromForms[cardIndex].map((form, formIndex) => (
@@ -232,7 +228,7 @@ function Selectatthree() {
                             focus:ring-blue-500 focus:border-blue-500 block w-1/3 p-2.5 
                             dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         >
-                         {card.optionsTo.map((opt, i) => (
+                          {card.optionsTo.map((opt, i) => (
                             <option key={i} value={opt}>
                               {opt}
                             </option>
@@ -261,8 +257,12 @@ function Selectatthree() {
                         </div>
                       </form>
                     ))}
-                  </div>
 
+                    {/* ✅ صندوق الوصف أسفل "إلى ح /" */}
+                    <div className="mt-4 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg p-3 text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                      {card.description}
+                    </div>
+                  </div>
                 </div>
               </ComponentCard>
             )}
